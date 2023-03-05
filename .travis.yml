@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t 01919965532/docker-react-pod -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true 01919965532/docker-react-pod npm run test -- --coverage
